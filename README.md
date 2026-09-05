@@ -1,106 +1,54 @@
-# DeluluVerse — Parallel Universe You
+# DeluluVerse — The life you didn't choose
 
-<p align="center">
-  <img src="assets/banner.svg" alt="DeluluVerse — Parallel Universe You" width="100%" />
-</p>
+**[Play v2](https://deluluverse-nu.vercel.app)** · **[Classic v1](https://deluluverse-nu.vercel.app/v1/)**
 
-<p align="center">
-  <strong>Somewhere, another you already did it.</strong><br/>
-  A cinematic alternate-life simulator for people whose Plan B is another universe.
-</p>
+A personal, playable “what if?” story about a steady career, an independent idea, and the people you make time for. Fantasy atmosphere; grounded consequences.
 
-<p align="center">
-  <a href="https://deluluverse-nu.vercel.app"><strong>✦ Enter the live multiverse</strong></a>
-  ·
-  <a href="https://github.com/Rishikeshsanin/DeluluVerse/actions/workflows/validate.yml">CI</a>
-</p>
+## Version 2
 
----
+Enter a name, an idea, responsibilities and a priority. Play eight chapters spanning one fictional year. Every decision changes story resources and is remembered by later scenes.
 
-DeluluVerse takes a few facts about your current timeline and fractures them into personalized alternate realities: founder-you, 2050-you, the career you never chose, and a restricted neon-cyberpunk version of yourself.
+- Two beginnings: accept a job or give your idea a defined season.
+- Eight decisions, 256 choice sequences, and conditional scenes that remember earlier choices.
+- Four explicit fictional resources: breathing room, energy, momentum and connection. These are game mechanics, never forecasts or real-world probabilities.
+- Read the immediate consequence before advancing.
+- Rewind to any decision, replay, and compare two completed lives.
+- A personal letter reflecting your decisions and a practical reflection prompt.
+- Local progress and up to four completed alternate timelines; resume and clear controls.
+- Copyable ending and decision history, with manual-copy fallback.
+- Responsive layout, keyboard controls, focus management and reduced motion.
+- No login, backend, database, analytics or AI API. No runtime package dependencies. Google Fonts is optional; system fonts work if unavailable.
 
-It is intentionally dramatic, fantasy-first, responsive, and privacy-friendly. V1 requires **no login, database, analytics service, paid AI API, or shared infrastructure**.
+This release deliberately develops one coherent career/independent-project story. The founder, 2050, alternate-career and cyberpunk universes remain in Classic v1.
 
-## ✦ What it does
+## Honesty and privacy
 
-- Five-step reality calibration flow
-- `% DELULU` chaos control
-- Personalized deterministic reality generation
-- Four cinematic alternate universes
-  - Founder Reality
-  - 2050 Reality
-  - The Path Not Taken
-  - Restricted Cyberpunk Timeline
-- Dynamic roles, cities, powers, relics and reality stats
-- Timeline echoes for every universe
-- Interactive three-decision branch experiment
-- Multiple branch endings
-- Re-rollable universe seed
-- Copyable reality summaries
-- Browser-local persistence via `localStorage`
-- Responsive layouts for desktop, tablet and mobile
-- Reduced-motion accessibility support
-- User-input escaping before generated HTML is rendered
+This is authored interactive fiction, not a prediction engine. It does not estimate income, success odds, personality or future outcomes. Inputs personalize a structured story; they are not sent to an AI model. Name and idea are escaped before rendering. Responsibilities change starting resources; priorities shape reflection text.
 
-## Tech
+V2 uses only the browser key `deluluverse.v2`, validates saved choices, and recomputes state by replaying them. Classic v1 keeps its original storage key. Clearing v2 does not clear v1. Browser storage can be cleared by the browser or user, and is not cross-device storage. If storage is unavailable, the current tab remains playable with a visible notice.
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Browser `localStorage`
-- Vercel static deployment
-- GitHub Actions validation
-- **Zero runtime package dependencies**
-
-## Run locally
-
-No package installation is required.
-
-macOS / Linux:
+## Run and validate
 
 ```bash
 python3 -m http.server 4173
+# Windows: py -m http.server 4173
+node tools/check.mjs
 ```
 
-Windows:
+Open http://localhost:4173. No install or build step is required. Node.js is needed only for validation.
 
-```powershell
-py -m http.server 4173
-```
+The check covers all 256 sequences across all nine responsibility/priority combinations (2,304 full playthroughs), every rewind prefix, state bounds, ending variants, invalid saves, JavaScript syntax, local entrypoint assets, and exact v1 preservation. CI runs this same check. These checks do not substitute for browser/device testing.
 
-Then open `http://localhost:4173`.
+## Files
 
-## Validate
+- `index.html`, `style.css`, `app.mjs`: v2 interface and browser persistence.
+- `engine.mjs`: pure state transition and story engine.
+- `v1/index.html`: byte-for-byte preserved original experience.
+- `tools/check.mjs`: dependency-free validation.
+- `vercel.json`: static deployment and response headers.
 
-Node.js is only used for the repository validation script; it is not required by the website at runtime.
+## Version preservation
 
-```bash
-npm run check
-```
+Original v1 is retained at `/v1/` and on GitHub branch [`archive/v1`](https://github.com/Rishikeshsanin/DeluluVerse/tree/archive/v1), based on commit `48598d627938228962bb4b673513633e1e5638aa`.
 
-The same validation runs automatically through GitHub Actions on pushes and pull requests targeting `main`.
-
-## Privacy & isolation
-
-Profile answers remain in the visitor's browser. DeluluVerse v1 has no authentication, remote database, analytics SDK, or third-party AI API.
-
-The deployment is intentionally isolated from other projects: no shared database, environment variables, storage buckets, or backend services are required.
-
-## Deployment
-
-Production: **https://deluluverse-nu.vercel.app**
-
-`vercel.json` includes defensive headers for content-type sniffing, referrer behavior, and unused browser permissions.
-
-## Roadmap
-
-- Shareable URL-encoded universe seeds
-- Optional AI narrative mode behind an isolated serverless endpoint
-- Generated portrait / avatar reality cards
-- Spatial 3D portal mode
-- Multiplayer “compare timelines”
-- Saveable multiverse collections
-
----
-
-Built as a deliberately dramatic one-person internet experiment. ✦
+The deployment uses the existing **DeluluVerse** Vercel project only. No other project or shared infrastructure is required.

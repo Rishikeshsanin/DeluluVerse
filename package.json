@@ -1,8 +1,8 @@
 {
   "name": "deluluverse",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "A cinematic parallel-universe identity simulator.",
+  "description": "A personal, playable alternate-life story with persistent consequences.",
   "scripts": {
     "start": "python3 -m http.server 4173",
     "check": "node tools/check.mjs"
